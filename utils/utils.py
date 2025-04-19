@@ -1,0 +1,5 @@
+PATH_BGM = "Resources/bgm.mp3"
+PATH_VOICE_OVER = "outputs/output.mp3"
+PATH_UNTRANSCRIBED = "shorts/initial_video_untranscribed.mp4"
+PATH_MODEL = "base"
+PATH_TRANSCRIBED = "shorts/transcribed.mp4"

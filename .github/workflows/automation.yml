@@ -1,0 +1,66 @@
+name: Initiate Short Generation
+
+on:
+  schedule:
+    - cron: '0 12 * * *'  # Runs every day at 12 PM UTC
+  workflow_dispatch:
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Install FFmpeg & ImageMagick
+        run: |
+          sudo apt update
+          sudo apt install -y ffmpeg imagemagick
+          echo "IMAGEMAGICK_BINARY=/usr/bin/convert" >> $GITHUB_ENV  # Fix ImageMagick path
+
+      - name: Verify ImageMagick Installation
+        run: |
+          which convert
+          convert -version
+      
+      - name: Ensure Required Directories Exist
+        run: mkdir -p outputs shorts
+
+      - name: Set ImageMagick Path
+        run: |
+          echo "IMAGEMAGICK_BINARY=/usr/bin/convert" >> $GITHUB_ENV
+          export IMAGEMAGICK_BINARY=/usr/bin/convert
+
+      - name: Run the script
+        run: python app.py
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          SPEECHIFY_API_KEY: ${{ secrets.SPEECHIFY_API_KEY }}
+          API_URL: ${{ secrets.API_URL }}
+          MIN_IMAGES: 20
+
+          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+          GOOGLE_CSE_ID: ${{ secrets.GOOGLE_CSE_ID }}
+
+
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+          YT_PROJECT_ID: ${{ secrets.YT_PROJECT_ID }}
+          YT_AUTH_URI: ${{ secrets.YT_AUTH_URI }}
+          YT_TOKEN_URI: ${{ secrets.YT_TOKEN_URI }}
+          YT_REDIRECT_URI: ${{ secrets.YT_REDIRECT_URI }}
+          YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+      
+      - name: Clean up Generated Directories
+        if: always()
+        run: rm -rf outputs shorts

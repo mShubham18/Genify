@@ -1,0 +1,106 @@
+/* Custom Logo Styles */
+/* .genify-logo {
+  font-family: "Arial Rounded MT Bold", Arial, sans-serif;
+  font-size: 2.2rem;
+  font-weight: bold;
+  letter-spacing: -1px;
+} */
+
+/* Custom Logo Styles */
+.genify-logo {
+  font-family: "Arial Rounded MT Bold", Arial, sans-serif;
+  font-size: 2.2rem;
+  font-weight: 900; /* Extra bold weight */
+  font-style: italic; /* Added italic style */
+  letter-spacing: -1px;
+  display: inline-block;
+  transform: skew(-5deg); /* Optional subtle slant effect */
+}
+
+.gen {
+  color: #4169e1; /* Royal Blue */
+  font-weight: 900; /* Ensures boldness */
+}
+
+.ify {
+  color: #000000; /* Black */
+  font-weight: 900; /* Ensures boldness */
+}
+.gen {
+  color: #4169e1; /* Royal Blue */
+}
+
+.ify {
+  color: #000000; /* Black */
+}
+
+/* Search Bar Styles */
+.search-container {
+  width: 50%;
+  min-width: 300px;
+}
+
+.search-input {
+  border-left: none;
+  padding-left: 15px;
+  border-color: #dee2e6;
+}
+
+.search-input:focus {
+  box-shadow: none;
+  border-color: #dee2e6;
+}
+
+.dropdown-toggle {
+  border-right: none;
+  background-color: white;
+  border-color: #dee2e6;
+}
+
+.search-btn {
+  padding: 0.575rem 1.5rem;
+  background-color: #4169e1;
+  border-color: #4169e1;
+  transition: all 0.3s ease;
+}
+
+.search-btn:hover {
+  background-color: #3454b4;
+  border-color: #3454b4;
+}
+
+/* Dropdown Menu Styles */
+.dropdown-menu {
+  border-radius: 0.375rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.dropdown-item {
+  padding: 0.5rem 1.5rem;
+  transition: all 0.2s ease;
+}
+
+.dropdown-item:hover {
+  background-color: #f8f9fa;
+  color: #4169e1;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .search-container {
+    width: 100%;
+    margin-top: 1rem;
+  }
+
+  .genify-logo {
+    font-size: 1.8rem;
+  }
+
+  .input-group {
+    flex-wrap: nowrap;
+  }
+
+  .dropdown-toggle {
+    padding: 0.375rem 0.75rem;
+  }
+}

@@ -1,0 +1,17 @@
+numpy
+pandas
+google-generativeai
+python-dotenv
+duckduckgo_search
+openai-whisper
+opencv-python-headless
+moviepy==1.0.3
+tqdm
+Pillow
+google-auth
+google-auth-oauthlib
+google-auth-httplib2
+google-api-python-client
+imageio[ffmpeg]
+flask
+streamlit

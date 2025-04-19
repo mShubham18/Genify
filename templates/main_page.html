@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Generation</title>
+</head>
+<body>
+    <h1>Video Generation</h1>
+    <!-- Form to accept title and domain -->
+    <form method="POST" action="/upload">
+        <label for="title">Please enter the title:</label>
+        <input type="text" name="title" id="title" required>
+        <br><br>
+        <label for="domain">Please enter the domain:</label>
+        <input type="text" name="domain" id="domain" required>
+        <br><br>
+        <button type="submit">Generate</button>
+    </form>
+
+    <!-- Display the response or error message -->
+    {% if response %}
+        <h2>Video generated successfully! Response: {{ response }}</h2>
+    {% endif %}
+
+    {% if error %}
+        <h2 style="color: red;">{{ error }}</h2>
+    {% endif %}
+</body>
+</html>

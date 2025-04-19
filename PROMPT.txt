@@ -1,0 +1,20 @@
+-- For Generating the video script
+
+"""Provide a concise yet detailed explanation of the topic ‘[Back Propagation]’ in the domain of ‘[Data Science]’. 
+Keep the explanation clear and easy to understand, with minimal jargon, and aim for a maximum of 100 words. 
+The explanation should expand on the hook from the script, giving viewers more context about the topic and why it’s important or interesting. 
+End with a call like click the links below to explore more"""
+
+-- For Generating the video description
+
+"""Write a short, engaging script about ‘[Back Propagation]’ in the domain of ‘[Data Science]’.
+The script should be under [50] words. Begin with a hook that grabs attention and is easy to understand for a broad audience.
+Keep technical jargon to a minimum, and end with a subtle invitation for viewers to learn more,
+encouraging them to check the description for details about the creator and any related course."""
+
+-- For Generating the video title
+
+"""Create a catchy and engaging title for a video about ‘[Back propagation]’ in the domain of ‘[Data Science]’.
+The title should be attention-grabbing, sparking curiosity, and encouraging viewers to click.
+Make sure it’s clear, concise, and reflects the value the viewer will get from watching.
+Use intriguing phrases or questions that leave the viewer wanting to learn more, without giving away too much."""
