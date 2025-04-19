@@ -16,3 +16,7 @@ imageio[ffmpeg]
 flask
 streamlit
 gunicorn
+imageio
+imageio-ffmpeg
+
+
