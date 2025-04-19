@@ -2,6 +2,7 @@ import streamlit as st
 from components.model_configuration import model_config
 from pipelines.video_generation_pipeline import generate_video_pipeline
 from components.generate_response import generate_fact
+from pipelines.upload_video_pipeline import upload_video_pipeline
 import os
 # Initialize the model
 model = model_config()
@@ -51,7 +52,7 @@ with st.container():
     # Schedule button
     if st.button("📤 Generate"):
         fact = generate_fact(video_title,domain)
-        response = generate_video_pipeline(fact)
+        response = upload_video_pipeline(fact,domain)
         
         # Assuming the video is saved as 'generated_video.mp4' in the resource/output folder
         #video_path = os.path.join("resource", "output", "generated_video.mp4")

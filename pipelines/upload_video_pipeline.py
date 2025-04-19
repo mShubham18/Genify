@@ -4,7 +4,7 @@ from components.upload_to_youtube import upload_video
 from components.model_configuration import model_config
 from utils.utils import PATH_TRANSCRIBED
 
-def upload_video_pipeline(fact):
+def upload_video_pipeline(fact,domain):
     generated_fact=generate_video_pipeline(fact)
     model = model_config()
 
@@ -21,11 +21,16 @@ def upload_video_pipeline(fact):
     did you know this about mayank ?/mayank is a person who like cats and this short explains why/mayank,cats,loves
     do not include headings like title, tags, description, just straigh forward the output
     """
-
+    desc_prompt = f"""Provide a concise yet detailed explanation of the topic ‘[{fact}]’ in the domain of ‘[{domain}]’.
+    Keep the explanation clear and easy to understand, with minimal jargon, and aim for a maximum of 100 words.
+    The explanation should expand on the hook from the script, giving viewers more context about the topic and why it’s important or interesting.
+    End with a call like click the links below to explore more, do not include any salutation just the content"""
     response=model.generate_content(prompt)
     output=response.text
     output_list=(output.replace("\n","")).split("/")
     video_title = output_list[0]
+
+    video_description = model.generate_content(desc_prompt).text
     video_description = output_list[1]
     video_tags = output_list[2]
     video_tags= video_tags.split(",")
