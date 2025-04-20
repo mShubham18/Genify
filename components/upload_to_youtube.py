@@ -45,7 +45,7 @@ def authenticate_youtube():
     return build("youtube", "v3", credentials=credentials)
 
 # Upload video function
-def upload_video(video_path, title, description, tags, privacy_status="private"):
+def upload_video(video_path, title, description, tags, privacy_status="public"):
     youtube = authenticate_youtube()
 
     request_body = {

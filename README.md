@@ -1,17 +1,18 @@
-# Automated Shinobi
+# Genify
 
 ## Overview
-Automated Shinobi is a fully automated pipeline that generates short YouTube videos featuring rare and interesting facts about Anime like *Naruto*, *Bleach*, and *Attack on Titan*. The project is built entirely using Python with a modular coding approach.
+Genify is an AI agent that automates the content creation process for influencers and educators by eliminating the need to manually create, record, transcribe, and edit videos. It handles the entire workflow for you — and even uploads the final content directly to your social media platforms, such as YouTube.
 
+- 🚀Live Link: https://genify-jmabeecjjebdfndbdyzusz.streamlit.app/
+- 📽️Demo Video: https://youtu.be/VZxVUVM_3rE
 ## Features
-- **Fact Generation**: Uses the Gemini API to generate rare and interesting facts about the selected anime series.
+- **Fact Generation**: Uses the Gemini API to generate scripts for short videos automatically.
 - **AI Voiceovers**: Converts the generated fact into speech using the Speechify API.
 - **Image Fetching**: Uses the DuckDuckGo API to retrieve relevant images based on the generated fact.
 - **Video Compilation**: Leverages the MoviePy module to merge the background music (BGM), images, and AI-generated voiceovers into a short video with animations.
 - **Subtitle Generation**: Uses OpenAI's Whisper module to create subtitles based on the generated voiceover.
 - **Metadata Generation**: Gemini API is used again to generate an appropriate title, description, and tags for the video.
 - **YouTube Upload**: Utilizes the YouTube API to upload the generated video along with the metadata.
-- **Automation (Optional)**: The workflow can be automated using GitHub Actions, but the script can also be executed manually.
 
 ## Dependencies
 The project requires the following dependencies, specified in `requirements.txt`:
@@ -19,18 +20,23 @@ The project requires the following dependencies, specified in `requirements.txt`
 numpy
 pandas
 google-generativeai
-python-dotenv  # For managing environment variables
+python-dotenv
 duckduckgo_search
 openai-whisper
-opencv-python-headless  # Optimized for servers (instead of opencv-python)
+opencv-python-headless
 moviepy==1.0.3
 tqdm
-Pillow  # Correct package name for PIL
+Pillow
 google-auth
 google-auth-oauthlib
 google-auth-httplib2
 google-api-python-client
-imageio[ffmpeg]  # Ensures ffmpeg support for MoviePy
+imageio[ffmpeg]
+flask
+streamlit
+gunicorn
+imageio
+imageio-ffmpeg
 ```
 
 ## Setting Up Environment Variables
@@ -57,19 +63,20 @@ YT_REFRESH_TOKEN=your_actual_yt_refresh_token
 Make sure to replace `your_actual_*` values with your real API keys. The `.env` file is used to store sensitive information securely and should **not** be committed to version control. You can add `.env` to your `.gitignore` file to prevent accidental commits.
 
 ## How It Works
-1. **Fact Generation**: The script fetches a random interesting fact using the Gemini API.
-2. **Voiceover Creation**: Converts the text into speech using the Speechify API.
-3. **Image Fetching**: Searches for relevant images using the DuckDuckGo API.
-4. **Video Compilation**: Combines images, BGM, and the voiceover into an animated video.
-5. **Subtitle Generation**: Generates subtitles based on the voiceover.
-6. **Metadata Creation**: Creates a title, description, and tags using Gemini.
-7. **YouTube Upload**: Uploads the video using the YouTube API.
-8. **Execution**: The process can be run manually using `python app.py`.
+1. **User Input**: The user enters a title along with a domain on which the video should be
+2. **Script Generation**: The script Creates a script using the Gemini API.
+3. **Voiceover Creation**: Converts the text into speech using the Speechify API.
+4. **Image Fetching**: Searches for relevant images using the DuckDuckGo API.
+5. **Video Compilation**: Combines images, BGM, and the voiceover into an animated video.
+6. **Subtitle Generation**: Generates subtitles based on the voiceover.
+7. **Metadata Creation**: Creates a title, description, and tags using Gemini.
+8. **YouTube Upload**: Uploads the video using the YouTube API.
+9. **Manual Download**: Currently, the video can manually be downloaded to post on other platforms as well.Though this could be automated as well later.
 
 ## Flow chart
 
 <p align="center">
-  <img src="Elements/Flowchart.png" alt="Flowchart" width="500"/>
+  <img src="Elements/Genify.png" alt="Flowchart" width="500"/>
 </p>
 
 ## Running the Project Locally
@@ -77,11 +84,8 @@ To run the script manually on your local machine:
 1. Clone the repository.
 2. Set up API keys and environment variables in a `.env` file.
 3. Install dependencies using `pip install -r requirements.txt`.
-4. Run the script with `python app.py`.
+4. Run the script with `streamlit run final_app.py`.
 
-## Deployment & Automation (Optional)
-- If you wish to automate the process, configure GitHub Actions (`automation.yml`) to trigger the process on a schedule.
-- Push the project to GitHub and enable Actions to start automation.
 
 Contributions are welcome! Feel free to fork the repository, create a new branch, and submit a pull request with improvements or new features. 🙌🏻
 
